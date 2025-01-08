@@ -46,6 +46,19 @@
         background-color: #f8f9fa;
     }
 
+    .tile {
+        width: 300px;
+        transition: transform 0.3s;
+    }
+
+    .tile:hover {
+        transform: scale(1.05);
+    }
+
+    .vision-mission-section {
+        flex-wrap: wrap;
+    }
+
     /* Footer styling */
     footer {
         background-color: #2C3E50;
@@ -78,11 +91,8 @@
         <div class="carousel-item active">
             <img src="{{ asset('images/Hospital.jpg') }}" class="d-block w-100" alt="Hospital">
             <div class="carousel-caption d-none d-md-block">
-                <h4>ABC Hospital</h4>
-                <h6>Vision</h6>
-                <p></p>
-                <h6>Mission</h6>
-                <p></p>
+                <h4>Pharmacy</h4>                
+                <p>Our fully stocked in-house pharmacy ensures that patients receive prescribed medications promptly and efficiently. From over-the-counter drugs to specialized prescriptions, our pharmacists are here to guide you with expert advice and support.</p>                
             </div>
         </div>
 
@@ -90,7 +100,7 @@
             <img src="{{ asset('images/Medicine.jpg') }}" class="d-block w-100" alt="Medicine">
             <div class="carousel-caption d-none d-md-block">
                 <h4>Medicine</h4>
-                <p>Medicine is the field of health and healing. It includes nurses, doctors, and various specialists. It covers diagnosis, treatment, and prevention of disease, medical research, and many other aspects of health.</p>
+                <p>With a focus on holistic wellness, our medicine department offers consultations, diagnosis, and treatments for a wide array of medical conditions. Our expert physicians are committed to providing personalized care and ensuring your health is our top priority</p>
             </div>
         </div>
 
@@ -98,7 +108,7 @@
             <img src="{{ asset('images/Dental.jpg') }}" class="d-block w-100" alt="Dental Clinic">
             <div class="carousel-caption d-none d-md-block">
                 <h4>Dental Clinic</h4>
-                <p>A dental clinic is a healthcare facility where dentists and dental staff provide oral health care and treatments. Dental clinics offer a range of dental services, including checkups, fillings, root canals, and more. They may also provide emergency care after hours</p>
+                <p>Your oral health matters to us! Our dental clinic provides services ranging from routine check-ups to advanced dental procedures, including cleaning, fillings, extractions, and cosmetic dentistry. Experience care with a smile.</p>
             </div>
         </div>
 
@@ -106,7 +116,7 @@
             <img src="{{ asset('images/Eye.jpg') }}" class="d-block w-100" alt="Eye Clinic">
             <div class="carousel-caption d-none d-md-block">
                 <h4>Eye Clinic</h4>
-                <p>An eye clinic is a medical facility that provides specialized care for the eyes, including diagnosis, treatment, and investigation of minor eye disorders. Eye clinics are run by a group of medical specialists.</p>
+                <p>See the world clearly with our comprehensive eye care services. Our specialists handle everything from routine vision tests to the treatment of complex eye conditions, ensuring the health and well-being of your eyes.</p>
             </div>
         </div>
 
@@ -114,8 +124,7 @@
             <img src="{{ asset('images/Ear.jpg') }}" class="d-block w-100" alt="Ent Clinic">
             <div class="carousel-caption d-none d-md-block">
                 <h4>ENT Clinic</h4>
-                <p>An ear, nose, and throat (ENT) clinic is a medical facility that treats patients with a range of ear, nose, and throat issues.
-                    ENT clinics can provide diagnostic, medical, and surgical services. They may also work closely with other specialists, such as audiologists, neurosurgeons, and plastic surgeons.</p>
+                <p>Our Ear, Nose, and Throat (ENT) clinic is equipped to diagnose and treat conditions related to these vital sensory and functional organs. From hearing loss to sinus issues, our specialists are here to restore your comfort and health.</p>
             </div>
         </div>
 
@@ -123,7 +132,7 @@
             <img src="{{ asset('images/Orthopedic.jpg') }}" class="d-block w-100" alt="Orthopedic Clinic">
             <div class="carousel-caption d-none d-md-block">
                 <h4>Orthopedic Clinic</h4>
-                <p>The Department of Zoology conducts courses covering basic and applied fields of Zoology for undergraduate students registered for B.Sc. General Degree and B.Sc. Special Degree programs.</p>
+                <p>Regain mobility and strength with our specialized orthopedic care. We treat bone and joint disorders, fractures, and sports injuries, helping you get back to your active life with confidence.</p>
             </div>
         </div>
     </div>
@@ -137,7 +146,6 @@
     </button>
 </div>
 
-<!-- Page Body -->
 <div class="page-body">
     <h1 class="text-center">Welcome to the <br> Health Care Management System</h1>
     <p class="text-center">
@@ -145,11 +153,16 @@
         Our aim is to provide efficient and accessible services for all medical and non-medical staff.
     </p>
 
-    <h3 style="text-align: center">Vision</h3>
-    <p style="text-align: center">To be a leading healthcare management system that empowers hospitals to achieve excellence in patient care, fosters innovation in health services, and ensures accessibility, efficiency, and satisfaction for all stakeholders.</p><br>
-    <h3 style="text-align: center">Mission</h3>
-    <p style="text-align: center">To provide comprehensive, patient-centered healthcare solutions that ensure the seamless management of mental and physical well-being, enabling medical and non-medical staff to deliver efficient, compassionate, and quality care to all.</p>
-    
+    <div class="vision-mission-section d-flex justify-content-center gap-3 mt-5">
+        <div class="tile bg-light p-4 rounded shadow-sm text-center">
+            <h3 class="text-primary">Vision</h3>
+            <p>To be a leading healthcare management system that empowers hospitals to achieve excellence in patient care, fosters innovation in health services, and ensures accessibility, efficiency, and satisfaction for all stakeholders.</p>
+        </div>
+        <div class="tile bg-light p-4 rounded shadow-sm text-center">
+            <h3 class="text-success">Mission</h3>
+            <p>To provide comprehensive, patient-centered healthcare solutions that ensure the seamless management of mental and physical well-being, enabling medical and non-medical staff to deliver efficient, compassionate, and quality care to all.</p>
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->
