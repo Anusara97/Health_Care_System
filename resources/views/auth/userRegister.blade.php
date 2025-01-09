@@ -48,6 +48,22 @@
                 </div>
             </div>
 
+            <!-- Age -->
+            <div class="mb-3 row">
+                <label for="specificSizeInputAge" class="col-sm-4 col-form-label">Age</label>
+                <div class="col-sm-8">
+                    <input name="age" type="text" class="form-control" id="specificSizeInputName" placeholder="E.g:35" required>
+                </div>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="mb-3 row">
+                <label for="specificSizeInputTelNo" class="col-sm-4 col-form-label">Contact Number</label>
+                <div class="col-sm-8">
+                    <input name="telNo" type="text" class="form-control" id="specificSizeInputTelNo" placeholder="07x 123 4567" required>
+                </div>
+            </div>
+
             <!-- Email -->
             <div class="mb-3 row">
                 <label for="specificSizeInputEmail" class="col-sm-4 col-form-label">Email</label>
@@ -61,14 +77,6 @@
                             </div>
                         @enderror
                       </span>
-                </div>
-            </div>
-
-            <!-- Age -->
-            <div class="mb-3 row">
-                <label for="specificSizeInputAge" class="col-sm-4 col-form-label">Age</label>
-                <div class="col-sm-8">
-                    <input name="age" type="text" class="form-control" id="specificSizeInputName" placeholder="E.g:35" required>
                 </div>
             </div>
 
@@ -101,11 +109,11 @@
             <div class="mb-3 row">
                 <label for="Role" class="col-sm-4 col-form-label">Role</label>
                 <div class="col-sm-8">
-                    <select name="department" class="form-control" id="Role" placeholder="-Select One-">
+                    <select name="role" class="form-control" id="Role" placeholder="-Select One-">
                         <option value="Doctor">Doctor</option>
                         <option value="Senior Pharmacists">Senior Pharmacists</option>
                         <option value="Junior Pharmacists">Junior Pharmacists</option>
-                        <option value="Patient">Patient</option>        
+                        <option value="Patient" selected>Patient</option>        
                     </select>
                 </div>
             </div>

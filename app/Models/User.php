@@ -2,44 +2,41 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Model;
+
+// class User extends Model
+// {
+//     use HasFactory;
+// }
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['name', 'age', 'telno', 'email', 'gender', 'nic', 'slmc_reg_no', 'role', 'password'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // Define relationships
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class, 'id', 'id');
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    public function seniorPharmacist()
+    {
+        return $this->hasOne(SeniorPharmacist::class, 'id', 'id');
+    }
+
+    public function juniorPharmacist()
+    {
+        return $this->hasOne(JuniorPharmacist::class, 'id', 'id');
+    }
+
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'id', 'id');
+    }
 }
