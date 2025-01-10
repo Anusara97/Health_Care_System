@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('age');
-            $table->integer('telno');
+            $table->integer('telNo');
+            $table->string('gender');
+            $table->string('nic')->unique();
             $table->string('email')->unique();
-            $table->enum('gender', ['Male', 'Female']);
-            $table->string('nic');
-            $table->string('slmc_reg_no')->nullable();
-            $table->enum('role', ['Doctor', 'Senior Pharmacist', 'Junior Pharmacist', 'Patient']);
-            $table->string('password');
+            $table->string('slmcNo')->nullable();
+            $table->string('role');
+            $table->string('password');            
             $table->timestamps();
         });
     }

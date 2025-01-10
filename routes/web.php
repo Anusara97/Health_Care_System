@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TempUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::view('/register', 'auth/userRegister');
+Route::post('/register',[TempUserController::class, 'addTempUser']);

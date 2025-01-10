@@ -15,7 +15,7 @@
 
 <body style="background-color: #f8f9fa">
     <div class="abc">
-        <form action="" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 500px;">
+        <form action="/register" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 500px;">
             @csrf
             
             {{-- Registration Confirmation Notification --}}
@@ -45,6 +45,14 @@
                 <label for="specificSizeInputName" class="col-sm-4 col-form-label">Name with initials</label>
                 <div class="col-sm-8">
                     <input name="name" type="text" class="form-control" id="specificSizeInputName" placeholder="A.B.C.Perera" required>
+                    <span class="text-danger">
+                        @error('name')
+                            <br>                          
+                            <div class="alert alert-danger" style="text-align:center;" >
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </span>
                 </div>
             </div>
 
@@ -60,7 +68,15 @@
             <div class="mb-3 row">
                 <label for="specificSizeInputTelNo" class="col-sm-4 col-form-label">Contact Number</label>
                 <div class="col-sm-8">
-                    <input name="telNo" type="text" class="form-control" id="specificSizeInputTelNo" placeholder="07x 123 4567" required>
+                    <input name="telNo" type="text" class="form-control" id="specificSizeInputTelNo" placeholder="07x1234567" required>
+                    <span class="text-danger">
+                        @error('telNo')
+                            <br>                          
+                            <div class="alert alert-danger" style="text-align:center;" >
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </span>
                 </div>
             </div>
 
@@ -76,7 +92,7 @@
                                 {{$message}}
                             </div>
                         @enderror
-                      </span>
+                    </span>
                 </div>
             </div>
 
@@ -102,6 +118,14 @@
                 <label for="specificSizeInputNic" class="col-sm-4 col-form-label">NIC</label>
                 <div class="col-sm-8">
                     <input name="nic" type="text" class="form-control" id="specificSizeInputNic" placeholder="909090909V" required>
+                    <span class="text-danger">
+                        @error('nic')
+                            <br>                          
+                            <div class="alert alert-danger" style="text-align:center;" >
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </span>
                 </div>
             </div>
 
@@ -122,7 +146,7 @@
             <div class="mb-3 row d-none" id="SLMCField">
                 <label for="specificSizeInputSLMC" class="col-sm-4 col-form-label">SLMC Registration Number</label>
                 <div class="col-sm-8">
-                    <input name="SLMC" type="text" class="form-control" id="specificSizeInputSLMC">
+                    <input name="slmcNo" type="text" class="form-control" id="specificSizeInputSLMC">
                 </div>
             </div>
 
@@ -148,6 +172,14 @@
                 <label for="specificSizeInputPassword" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
                     <input name="password" type="password" class="form-control" id="specificSizeInputPassword" placeholder="Password" required>
+                    <span class="text-danger">
+                        @error('password')
+                            <br>                          
+                            <div class="alert alert-danger" style="text-align:center;" >
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </span>
                 </div>
             </div>
 
