@@ -17,7 +17,8 @@ class TempUserController extends Controller
             'name'=>'required',
             'telNo'=>'required|numeric|digits_between:10,12',
             'email' => 'required|email|unique:temp_users,email|unique:users,email',
-            'nic'=>'required|max:12|min:10',
+            'gender'=>'required',
+            'nic'=>'required|max:12|min:10|unique:temp_users,nic|unique:users,nic',
             'password'=>'required|min:6'
         ],[
             'telNo.numeric' => 'The Telephone number must contain only digits.',
@@ -25,6 +26,7 @@ class TempUserController extends Controller
             'email.unique' => 'This email is already registered.',
             'nic.max' => 'The national ID number must not exceed 12 characters.',
             'nic.min' => 'The national ID number must have at least 10 characters.',
+            'nic.unique' => 'This national ID number is already registered.',
             'password.min' => 'The Password must include at least 6 characters.'
         ]);
 
@@ -45,6 +47,56 @@ class TempUserController extends Controller
 
         if($result) {
             return back()->with('success', 'User Regitration Successfull! Await for the credentials.');
+        } else {
+            return back()->with('fail', 'Somthing worng!, Please check your inputs.');
+        }
+    }
+
+
+    // view temporary users
+    function showRequest() {
+        $data = TempUser::all();
+        return view('auth/TempUserList', ['users'=>$data]);
+    }
+
+    //remove unauthorized temporary users
+    function rejectRequest($id, Request $req) {
+        $data = TempUser::find($id);
+        $result = $data->delete();
+
+        if($result) {
+            return back()->with('success', 'User Rejected!');
+        } else {
+            return back()->with('fail', 'Somthing worng!, Please check your inputs.');
+        }
+    }
+
+    //Authorizing the temporary users
+    public function registerUser($id) {
+        $data = TempUser::find($id);
+    
+        //Add temp user as new user 
+        $user = new User();
+
+        $user->name = $data->name;
+        $user->age = $data->age;
+        $user->telNo = $data->telNo;
+        $user->email = $data->email;
+        $user->gender = $data->gender;
+        $user->nic = $data->nic;
+        $user->role = $data->role;
+        $user->slmcNo = $data->slmcNo;
+        $user->password = $data->password;
+
+        $result = $user->save();
+    
+        //delete temp user from temporary table after autherisation.
+        $data = TempUser::find($id);
+        $data->delete();
+    
+        //check if the result is successfull or not
+        if($result) {
+            return back()->with('success', 'User Regitration Successfull!');
         } else {
             return back()->with('fail', 'Somthing worng!, Please check your inputs.');
         }

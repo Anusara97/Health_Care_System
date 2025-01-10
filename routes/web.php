@@ -18,5 +18,9 @@ Route::get('/', function () {
     return view('auth/Home');
 });
 
+//user authentication and registration operations
 Route::view('/register', 'auth/userRegister');
 Route::post('/register',[TempUserController::class, 'addTempUser']);
+Route::get('/tempList',[TempUserController::class, 'showRequest']);
+Route::get('approve/{id}',[TempUserController::class,'registerUser']);
+Route::get('remove/{id}',[TempUserController::class,'rejectRequest']);

@@ -44,7 +44,7 @@
             <div class="mb-3 row">
                 <label for="specificSizeInputName" class="col-sm-4 col-form-label">Name with initials</label>
                 <div class="col-sm-8">
-                    <input name="name" type="text" class="form-control" id="specificSizeInputName" placeholder="A.B.C.Perera" required>
+                    <input name="name" type="text" class="form-control" id="specificSizeInputName" placeholder="A.B.C.Perera" value="{{old('name')}}" required>
                     <span class="text-danger">
                         @error('name')
                             <br>                          
@@ -60,7 +60,7 @@
             <div class="mb-3 row">
                 <label for="specificSizeInputAge" class="col-sm-4 col-form-label">Age</label>
                 <div class="col-sm-8">
-                    <input name="age" type="text" class="form-control" id="specificSizeInputName" placeholder="E.g:35" required>
+                    <input name="age" type="text" class="form-control" id="specificSizeInputName" placeholder="E.g:35" value="{{old('age')}}" required>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
             <div class="mb-3 row">
                 <label for="specificSizeInputTelNo" class="col-sm-4 col-form-label">Contact Number</label>
                 <div class="col-sm-8">
-                    <input name="telNo" type="text" class="form-control" id="specificSizeInputTelNo" placeholder="07x1234567" required>
+                    <input name="telNo" type="text" class="form-control" id="specificSizeInputTelNo" placeholder="07x1234567" value="{{old('telNo')}}" required>
                     <span class="text-danger">
                         @error('telNo')
                             <br>                          
@@ -84,7 +84,7 @@
             <div class="mb-3 row">
                 <label for="specificSizeInputEmail" class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
-                    <input name="email" type="email" class="form-control" id="specificSizeInputEmail" placeholder="perera@ruh.ac.lk" required>
+                    <input name="email" type="email" class="form-control" id="specificSizeInputEmail" placeholder="perera@ruh.ac.lk" value="{{old('email')}}" required>
                     <span class="text-danger">
                         @error('email')
                             <br>                          
@@ -102,22 +102,34 @@
                 <div class="col-sm-8 d-flex">
                     {{-- Male --}}
                     <div class="form-check me-3">
-                        <input class="form-check-input" type="radio" name="gender" value="Male">
+                        <input class="form-check-input" type="radio" name="gender" value="Male" 
+                            {{ old('gender') == 'Male' ? 'checked' : '' }}>
                         <label class="form-check-label" for="male">Male</label>
                     </div>
                     {{-- Female --}}
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" value="Female">
+                        <input class="form-check-input" type="radio" name="gender" value="Female" 
+                            {{ old('gender') == 'Female' ? 'checked' : '' }}>
                         <label class="form-check-label" for="female">Female</label>
                     </div>
                 </div>
+            
+                <!-- Validation Error Message for Gender -->
+                <span class="text-danger">
+                    @error('gender') 
+                        <br>                          
+                        <div class="alert alert-danger" style="text-align:center;" >
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </span>                
             </div>
 
             <!-- NIC -->
             <div class="mb-3 row">
                 <label for="specificSizeInputNic" class="col-sm-4 col-form-label">NIC</label>
                 <div class="col-sm-8">
-                    <input name="nic" type="text" class="form-control" id="specificSizeInputNic" placeholder="909090909V" required>
+                    <input name="nic" type="text" class="form-control" id="specificSizeInputNic" placeholder="909090909V" value="{{old('nic')}}" required>
                     <span class="text-danger">
                         @error('nic')
                             <br>                          
@@ -146,7 +158,7 @@
             <div class="mb-3 row d-none" id="SLMCField">
                 <label for="specificSizeInputSLMC" class="col-sm-4 col-form-label">SLMC Registration Number</label>
                 <div class="col-sm-8">
-                    <input name="slmcNo" type="text" class="form-control" id="specificSizeInputSLMC">
+                    <input name="slmcNo" type="text" class="form-control" id="specificSizeInputSLMC" value="{{old('slmcNo')}}">
                 </div>
             </div>
 
