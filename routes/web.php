@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TempUserController;
 
 /*
@@ -22,7 +23,9 @@ Route::get('/', function () {
 Route::view('/register', 'auth/userRegister');
 Route::post('/register',[TempUserController::class, 'addTempUser']);
 Route::get('/tempList',[TempUserController::class, 'showRequest']);
-Route::get('approve/{id}',[TempUserController::class,'registerUser']);
-Route::get('remove/{id}',[TempUserController::class,'rejectRequest']);
+Route::get('approve/{id}',[TempUserController::class, 'registerUser']);
+Route::get('remove/{id}',[TempUserController::class, 'rejectRequest']);
 
 Route::view('/dashboard', 'dashboards/adminDashboard');
+Route::view('/viewUsers', 'auth/ViewUsers');
+Route::get('/userList',[UserController::class, 'showUsers']);

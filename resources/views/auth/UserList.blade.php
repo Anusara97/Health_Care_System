@@ -9,10 +9,10 @@
 
 <body style="background-color: #f8f9fa">
     <div class="container mt-5">
-        <h2 class="text-center mb-4">User Registration Requests</h2>
+        <h2 class="text-center mb-4">User Informations</h2>
         <div class="table-responsive mx-auto" style="max-width: 90%; padding: 15px; background: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
             
-            {{-- Registration Confirmation Notification --}}
+            {{-- Confirmation Notification --}}
             @if(Session::has('success'))
                 <div class="alert alert-success" style="text-align:center">
                     {{Session::get('success')}}
@@ -50,8 +50,8 @@
                             <td>{{$user['slmcNo']}}</td>
                             <td>{{$user['role']}}</td>                        
                             <td>
-                                <a href="{{"approve/".$user['id']}}" class="btn btn-success">Approve</a> 
-                                <button class="btn btn-danger" onclick="showRejectAlert('{{url('remove/'.$user['id'])}}')">Reject</button>
+                                <a href="{{"approve/".$user['id']}}" class="btn btn-success">Edit</a> 
+                                <button class="btn btn-danger" onclick="showRejectAlert('{{url('remove/'.$user['id'])}}')">Remove</button>
                             </td>
                         </tr>
                     @endforeach
@@ -66,7 +66,7 @@
                             showCancelButton: true,
                             confirmButtonColor: '#d33',
                             cancelButtonColor: '#3085d6',
-                            confirmButtonText: 'Yes, Reject user!'
+                            confirmButtonText: 'Yes, Remove the User!'
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // Redirect to the URL to delete the user
