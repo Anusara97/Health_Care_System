@@ -29,3 +29,4 @@ Route::get('remove/{id}',[TempUserController::class, 'rejectRequest']);
 Route::view('/dashboard', 'dashboards/adminDashboard');
 Route::view('/viewUsers', 'auth/ViewUsers');
 Route::get('/userList',[UserController::class, 'showUsers']);
+Route::get('reject/{id}',[UserController::class, 'removeUser']);
