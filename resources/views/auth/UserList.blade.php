@@ -50,7 +50,7 @@
                             <td>{{$user['slmcNo']}}</td>
                             <td>{{$user['role']}}</td>                        
                             <td>
-                                <a href="{{"approve/".$user['id']}}" class="btn btn-success">Edit</a> 
+                                <a href="{{"edit/".$user['id']}}" class="btn btn-success">Edit</a> 
                                 <button class="btn btn-danger" onclick="showRejectAlert('{{url('remove/'.$user['id'])}}')">Remove</button>
                             </td>
                         </tr>

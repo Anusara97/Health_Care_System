@@ -51,7 +51,7 @@
                             <td>{{$user['role']}}</td>                        
                             <td>
                                 <a href="{{"approve/".$user['id']}}" class="btn btn-success">Approve</a> 
-                                <button class="btn btn-danger" onclick="showRejectAlert('{{url('remove/'.$user['id'])}}')">Reject</button>
+                                <button class="btn btn-danger" onclick="showRejectAlert('{{url('reject/'.$user['id'])}}')">Reject</button>
                             </td>
                         </tr>
                     @endforeach

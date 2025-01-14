@@ -24,9 +24,11 @@ Route::view('/register', 'auth/userRegister');
 Route::post('/register',[TempUserController::class, 'addTempUser']);
 Route::get('/tempList',[TempUserController::class, 'showRequest']);
 Route::get('approve/{id}',[TempUserController::class, 'registerUser']);
-Route::get('remove/{id}',[TempUserController::class, 'rejectRequest']);
+Route::get('reject/{id}',[TempUserController::class, 'rejectRequest']);
 
 Route::view('/dashboard', 'dashboards/adminDashboard');
 Route::view('/viewUsers', 'auth/ViewUsers');
 Route::get('/userList',[UserController::class, 'showUsers']);
-Route::get('reject/{id}',[UserController::class, 'removeUser']);
+Route::get('remove/{id}',[UserController::class, 'removeUser']);
+Route::get('edit/{id}',[UserController::class, 'editUser']);
+Route::post('/updateUser',[UserController::class,'updateUser']); //visible to admin
