@@ -15,6 +15,7 @@ use App\Http\Controllers\TempUserController;
 |
 */
 
+//Welcome Page
 Route::get('/', function () {
     return view('auth/Home');
 });
@@ -32,8 +33,12 @@ Route::get('/tempList',[TempUserController::class, 'showRequest']);
 Route::get('approve/{id}',[TempUserController::class, 'registerUser']);
 Route::get('reject/{id}',[TempUserController::class, 'rejectRequest']);
 
+//User management Operations
 Route::view('/viewUsers', 'auth/ViewUsers');
 Route::get('/userList',[UserController::class, 'showUsers']);
 Route::get('remove/{id}',[UserController::class, 'removeUser']);
 Route::get('edit/{id}',[UserController::class, 'editUser']);
-Route::post('/updateUser',[UserController::class,'updateUser']); //visible to admin
+Route::post('/updateUser',[UserController::class,'updateUser']);
+
+//Make Patient Appointments
+Route::view('/appointment','appointments/makeApp');
