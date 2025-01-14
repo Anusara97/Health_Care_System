@@ -207,7 +207,9 @@
 
             <div class="d-flex justify">
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="reset" class="btn btn-danger me-2">Reset</button>
+                <a href="/login" class="btn btn-success me-2">Sign in</a>
+                <a href="/" class="btn btn-warning">Home</a>
             </div>
         </form>
     </div>

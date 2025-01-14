@@ -35,7 +35,7 @@
             <div id="formAlertContainer"></div>           
             
             <div class="mb-3">
-                <h2 style="text-align: center">User Registration</h2>
+                <h2 style="text-align: center">Update Your Profile</h2>
             </div>
 
             <hr>

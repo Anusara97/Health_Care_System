@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 //user authentication and registration operations
+Route::view('/login', 'auth/userLogin');
 Route::view('/register', 'auth/userRegister');
 Route::post('/register',[TempUserController::class, 'addTempUser']);
 Route::get('/tempList',[TempUserController::class, 'showRequest']);
