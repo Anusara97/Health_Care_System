@@ -101,4 +101,58 @@ class UserController extends Controller
             return back()->with('fail', 'Somthing worng!, Please check your inputs.');
         }
     }
+
+    function loginUser(Request $req) {
+        $req->validate([
+            'username'=>'required',
+            'password'=>'required'
+        ]);
+
+        $user = User::where('email', '=', $req->username)->first();
+
+        if ($user) {
+            if(Hash::check($req->password, $user->password)) {
+                $req -> Session()->put('loginId', $user->id);
+                return redirect('/dashboard');
+            }else {
+                return back()->with('fail', 'Accessed Denied! Please, check your credentials.');
+            }
+        } else {
+            return back()->with('fail', 'Accessed Denied! Please, Register first!');
+        }
+    }
+
+    function dashboards()
+    {
+        if (Session::has('loginId')) {
+            // Retrieve the logged-in user's data
+            $user = User::where('id', Session::get('loginId'))->first();
+            $role = $user->role;
+
+            // Check the user's role and redirect accordingly
+            $data = $user; // Pass the logged-in user's data directly
+            if ($role === 'Admin') {
+                return view('dashboards.adminDashboard', compact('data'));
+            } elseif ($role === 'Doctor') {
+                return view('dashboards.doctorDashboard', compact('data'));
+            } elseif ($role === 'Senior Pharmacist') {
+                return view('dashboards.sePhDashboard', compact('data'));
+            } elseif ($role === 'Junior Pharmacist') {
+                return view('dashboards.juPhDashboard', compact('data'));
+            } elseif ($role === 'Patient') {
+                return view('dashboards.patientDashboard', compact('data'));
+            } else {
+                return redirect('/login')->with('fail', 'Invalid role!');
+            }
+        } else {
+            return redirect('/login')->with('fail', 'Accessed Denied! You have to login first!');
+        }
+    }
+
+    function logout() {
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect('/login');
+        }
+    }
 }

@@ -114,13 +114,13 @@
         </a>
 
         <div class="d-flex align-items-center">
-            <p class="mb-0 text-black" style="font-size: 1.0rem;">Hello, Admin</p>
+            <p class="mb-0 text-black" style="font-size: 1.0rem;">Hello, {{$data['name']}}</p>
             <ul class="nav nav-pills">  
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
                     <ul class="dropdown-menu">
-                        {{-- <li><a class="dropdown-item" href="{{url('editUser/'.$data['id'])}}">Edit Profile</a></li> --}}
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{url('edit/'.$data['id'])}}">Edit Profile</a></li>
+                        <li><a class="dropdown-item me-3" href="/logout">Logout</a></li>
                     </ul>
                 </li>
             </ul>            

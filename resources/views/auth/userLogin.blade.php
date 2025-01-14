@@ -16,7 +16,7 @@
 
 <body style="background-color: #f8f9fa">
     <div class="abc">
-        <form action="" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 400px;">
+        <form action="/login" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 400px;">
             @csrf
             <div class="mb-3">
                 <h2 style="text-align: center">Sign in User</h2>

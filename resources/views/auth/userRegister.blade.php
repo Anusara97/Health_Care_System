@@ -147,8 +147,8 @@
                 <div class="col-sm-8">
                     <select name="role" class="form-control" id="Role" placeholder="-Select One-">
                         <option value="Doctor">Doctor</option>
-                        <option value="Senior Pharmacists">Senior Pharmacists</option>
-                        <option value="Junior Pharmacists">Junior Pharmacists</option>
+                        <option value="Senior Pharmacist">Senior Pharmacist</option>
+                        <option value="Junior Pharmacist">Junior Pharmacist</option>
                         <option value="Patient" selected>Patient</option>        
                     </select>
                 </div>
