@@ -132,10 +132,23 @@
 <div class="abc">
     <!-- Heading Section -->
     <h1 class="section-heading">Admin Dashboard</h1>
+
+    {{-- Notification --}}
+    @if(Session::has('success'))
+        <div class="alert alert-success" style="text-align:center">
+            {{Session::get('success')}}
+        </div>
+    @endif
+    @if(Session::has('fail'))
+        <div class="alert alert-danger" style="text-align:center">
+            {{Session::get('fail')}}
+        </div>
+    @endif
+    {{-- end notification --}}
     
     <!-- Button Section -->
-    <div class="button-grid">
-        <a href="/tempList" class="btn-custom-1">Registration Request Management</a>
+    <div class="button-grid">        
+        <a href="/viewUsers" class="btn-custom-1">Registration Request Management</a>
         <a href="" class="btn-custom-1">User Management</a>
         <a href="" class="btn-custom-1">Appointments</a>
         <a href="" class="btn-custom-1">Patient Records</a>

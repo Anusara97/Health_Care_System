@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TempUserController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,5 @@ Route::get('edit/{id}',[UserController::class, 'editUser']);
 Route::post('/updateUser',[UserController::class,'updateUser']);
 
 //Make Patient Appointments
-Route::view('/appointment','appointments/makeApp');
+Route::get('/appointment', [AppointmentController::class, 'showMakeAppointmentForm']);
+Route::post('/setAppointment', [AppointmentController::class, 'setAppointment']);

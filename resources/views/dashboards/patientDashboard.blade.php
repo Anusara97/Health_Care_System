@@ -70,27 +70,27 @@
     }
 
     .btn-custom-1:nth-child(3) {
-        background: linear-gradient(135deg, #56ab2f, #a8e063); /* Bright Green */
+        background: linear-gradient(135deg, #56ab2f, #a8e063); 
     }
 
     .btn-custom-1:nth-child(4) {
-        background: linear-gradient(135deg, #f1f2f4, #8059cf); /* Bright Blue */
+        background: linear-gradient(135deg, #f1f2f4, #8059cf); 
     }
 
     .btn-custom-1:nth-child(5) {
-        background: linear-gradient(135deg, #4facfe, #00f2fe); /* Coral */
+        background: linear-gradient(135deg, #4facfe, #00f2fe); 
     }
 
     .btn-custom-1:nth-child(6) {
-        background: linear-gradient(135deg, #43cea2, #185a9d); /* Aqua */
+        background: linear-gradient(135deg, #43cea2, #185a9d);
     }
 
     .btn-custom-1:nth-child(7) {
-        background: linear-gradient(135deg, #f8ef3a, #e42c2c); /* Magenta */
+        background: linear-gradient(135deg, #f8ef3a, #e42c2c); 
     }
 
     .btn-custom-1:nth-child(8) {
-        background: linear-gradient(135deg, #e70c0c, #c1bbbb); /* Sky Blue */
+        background: linear-gradient(135deg, #e70c0c, #c1bbbb); 
     }
 
     .btn-custom-1:hover {
@@ -132,17 +132,24 @@
 <div class="abc">
     <!-- Heading Section -->
     <h1 class="section-heading">Patient Dashboard</h1>
+
+    {{-- Notification --}}
+    @if(Session::has('success'))
+        <div class="alert alert-success" style="text-align:center">
+            {{Session::get('success')}}
+        </div>
+    @endif
+    @if(Session::has('fail'))
+        <div class="alert alert-danger" style="text-align:center">
+            {{Session::get('fail')}}
+        </div>
+    @endif
+    {{-- end notification --}}
     
     <!-- Button Section -->
     <div class="button-grid">
-        <a href="/tempList" class="btn-custom-1">Registration Request Management</a>
-        <a href="" class="btn-custom-1">User Management</a>
-        <a href="" class="btn-custom-1">Appointments</a>
+        <a href="/appointment" class="btn-custom-1">Make Appointments</a>
         <a href="" class="btn-custom-1">Patient Records</a>
-        <a href="" class="btn-custom-1">Process Audit</a>
-        <a href="" class="btn-custom-1">Inventory Management</a>
-        <a href="" class="btn-custom-1">Billing</a>
-        <a href="" class="btn-custom-1">Feedback</a>
     </div>
 </div>
 
