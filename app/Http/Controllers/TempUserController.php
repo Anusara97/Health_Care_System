@@ -46,7 +46,7 @@ class TempUserController extends Controller
         $result = $TempUser->save();
 
         if($result) {
-            return back()->with('success', 'User Regitration Successfull! Await for the credentials.');
+            return back()->with('success', 'User Regitration request sent! Check your email for more information.');
         } else {
             return back()->with('fail', 'Somthing worng!, Please check your inputs.');
         }

@@ -26,6 +26,9 @@ Route::view('/login', 'auth/userLogin');
 Route::post('/login', [UserController::class, 'loginUser']);
 Route::get('/dashboard',[UserController::class,'dashboards']);
 Route::get('/logout',[UserController::class,'logout']);
+//Add user by admin
+Route::view('/addUser','auth/addUser');
+Route::post('/addUser',[UserController::class,'addUser']);
 
 //user authentication and registration operations
 Route::view('/register', 'auth/userRegister');

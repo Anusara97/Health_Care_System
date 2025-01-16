@@ -76,27 +76,38 @@ class UserController extends Controller
     function addUser(Request $req) {
         $req->validate([
             'name'=>'required',
-            'email'=>'required|email|unique:temp_users',
-            'designation'=>'required',
-            'password'=>'required'
+            'telNo'=>'required|numeric|digits_between:10,12',
+            'email' => 'required|email|unique:temp_users,email|unique:users,email',
+            'gender'=>'required',
+            'nic'=>'required|max:12|min:10|unique:temp_users,nic|unique:users,nic',
+            'password'=>'required|min:6'
+        ],[
+            'telNo.numeric' => 'The Telephone number must contain only digits.',
+            'telNo.digits_between' => 'The Telephone number must not exceed 12 characters.',
+            'email.unique' => 'This email is already registered.',
+            'nic.max' => 'The national ID number must not exceed 12 characters.',
+            'nic.min' => 'The national ID number must have at least 10 characters.',
+            'nic.unique' => 'This national ID number is already registered.',
+            'password.min' => 'The Password must include at least 6 characters.'
         ]);
 
         $User = new User;
         
         $User->name = $req->name;
+        $User->age = $req->age;
+        $User->telNo = $req->telNo;
         $User->email = $req->email;
-        $User->designation = $req->designation;
-        $User->staffId = $req->staffId ?: null;
-        // Set department to null if the designation is Student, otherwise use the request input
-        $User->department = $req->designation === "Student" ? null : $req->department;
-        $User->studentId = $req->studentId ?: null;
+        $User->gender = $req->gender;
+        $User->nic = $req->nic;        
+        $User->role = $req->role;
+        // Set SLMC no to null if the role is Patient, otherwise use the request input
+        $User->slmcNo = $req->role === "Patient" ? null : $req->slmcNo;
         $User->password = Hash::make($req->password);
-        // Set the role
-        $User->role = $req->designation === "Student" ? "Student" : "Staff";
+
         $result = $User->save();
 
         if($result) {
-            return back()->with('success', 'User Regitration Successfull!');
+            return back()->with('success', 'User Regitration Successfull! Await for the credentials.');
         } else {
             return back()->with('fail', 'Somthing worng!, Please check your inputs.');
         }

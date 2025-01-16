@@ -148,9 +148,9 @@
     
     <!-- Button Section -->
     <div class="button-grid">        
-        <a href="/viewUsers" class="btn-custom-1">Registration Request Management</a>
-        <a href="" class="btn-custom-1">User Management</a>
-        <a href="" class="btn-custom-1">Appointments</a>
+        <a href="/tempList" class="btn-custom-1">Registration Request Management</a>
+        <a href="/viewUsers" class="btn-custom-1">User Management</a>
+        <a href="" class="btn-custom-1">Appointments List</a>
         <a href="" class="btn-custom-1">Patient Records</a>
         <a href="" class="btn-custom-1">Process Audit</a>
         <a href="" class="btn-custom-1">Inventory Management</a>
