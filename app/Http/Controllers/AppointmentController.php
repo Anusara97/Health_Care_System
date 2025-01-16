@@ -60,4 +60,10 @@ class AppointmentController extends Controller
             return back()->with('fail', 'Somthing worng!, Please check your appointment details.');
         }        
     }
+
+    // view appointment list
+    function showAppointments() {
+        $data = Appointment::all();
+        return view('appointments/appList', ['appointments'=>$data]);
+    }
 }

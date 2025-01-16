@@ -47,3 +47,7 @@ Route::post('/updateUser',[UserController::class,'updateUser']);
 //Make Patient Appointments
 Route::get('/appointment', [AppointmentController::class, 'showMakeAppointmentForm']);
 Route::post('/setAppointment', [AppointmentController::class, 'setAppointment']);
+Route::get('/appList', [AppointmentController::class, 'showAppointments']);
+
+//Treatement
+Route::view('/prescription', 'treatments/prescription');

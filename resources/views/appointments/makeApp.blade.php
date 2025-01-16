@@ -16,7 +16,7 @@
         <form action="/setAppointment" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 500px;">
             @csrf
             
-            {{-- Appointment Confirmation Notification --}}
+            {{-- Notification --}}
             @if(Session::has('success'))
                 <div class="alert alert-success" style="text-align:center">
                     {{ Session::get('success') }}
@@ -27,6 +27,7 @@
                     {{ Session::get('fail') }}
                 </div>
             @endif
+            {{-- End Notification --}}
 
             <div class="mb-3">
                 <h2 style="text-align: center">Make Appointment</h2>
