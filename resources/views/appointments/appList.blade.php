@@ -46,8 +46,8 @@
                             <td>{{$app['name']}}</td>
                             <td>{{$app['age']}}</td>                        
                             <td>{{$app['gender']}}</td>                      
-                            <td>
-                                <a href="/prescription" class="btn btn-warning">Treatemet</a> 
+                            <td>                                
+                                <a href="{{"/prescription/".$app['id']}}" class="btn btn-warning">Treatemet</a> 
                                 <button class="btn btn-danger" onclick="showRejectAlert('')">Remove</button>
                             </td>
                         </tr>

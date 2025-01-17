@@ -50,4 +50,5 @@ Route::post('/setAppointment', [AppointmentController::class, 'setAppointment'])
 Route::get('/appList', [AppointmentController::class, 'showAppointments']);
 
 //Treatement
-Route::view('/prescription', 'treatments/prescription');
+Route::get('/prescription/{id}', [AppointmentController::class, 'showPrescriptionForm']);
+Route::post('/prescription/save', [AppointmentController::class, 'savePrescription']);

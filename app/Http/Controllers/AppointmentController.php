@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Appointment;
+use App\Models\PatientRecord;
 use Session;
 
 class AppointmentController extends Controller
@@ -80,5 +81,77 @@ class AppointmentController extends Controller
         // Fetch all appointments and pass them to the view
         $data = Appointment::all();
         return view('appointments/appList', ['appointments' => $data]);
+    }
+
+    //make prescription
+    public function showPrescriptionForm($id)
+    {
+        // Check if the user is logged in
+        if (!Session::has('loginId')) {
+            return redirect('/login')->with('fail', 'Access Denied! You have to log in first!');
+        }
+
+        // Fetch logged-in user's details
+        $userId = Session::get('loginId');
+        $doctor = User::find($userId);
+
+        // Check if the user is a doctor
+        if ($doctor->role !== 'Doctor') {
+            return redirect('/dashboard')->with('fail', 'Access Denied! Only Doctors can prescribe medications.');
+        }
+
+        // Retrieve the appointment details
+        $appointment = Appointment::where('id', $id)->first();
+
+        if (!$appointment) {
+            return redirect('appointments/appList')->with('fail', 'Appointment not found.');
+        }
+
+        // Pass data to the view
+        return view('treatments/prescription', [
+            'appId' => $appointment->id,
+            'name' => $appointment->name,
+            'age' => $appointment->age,
+            'gender' => $appointment->gender,
+            'appNo' => $appointment->appNo,
+            'date' => $appointment->date,
+            'disease' => $appointment->disease,
+            'dName' => $doctor->name,
+        ]);
+    }
+
+    //Store patient treatment data
+    public function savePrescription(Request $req)
+    {
+        $req->validate([
+            'drugName' => 'required|string',
+            'dosage' => 'required|string',            
+        ]);
+
+        // Save prescription data in PatientRecords table
+        $record = new PatientRecord();
+
+        $record->name = $req->name;
+        $record->age = $req->age;
+        $record->gender = $req->gender;
+        $record->appNo = $req->appNo;
+        $record->date = $req->date;
+        $record->disease = $req->disease;
+        $record->drugName = $req->drugName;
+        $record->dosage = $req->dosage;
+        $record->patientStatus = $req->patientStatus;
+        $record->substitutionStatus = $req->substitutionStatus;
+        $record->dName = $req->dName;
+
+        $result = $record->save();
+
+        $data = Appointment::find($req->appId);
+        $data->delete();
+
+        if ($result) {
+            return redirect('/appList')->with('success', 'Prescription has been successfully saved.');
+        } else {
+            return back()->with('fail', 'Failed to save prescription. Please try again.');
+        }
     }
 }

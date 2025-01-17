@@ -33,7 +33,7 @@
 
 <body style="background-color: #f8f9fa">
     <div class="abc">
-        <form action="" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 500px;">
+        <form action="/prescription/save" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 500px;">
             @csrf
             
             {{-- Notification --}}
@@ -55,11 +55,14 @@
 
             <hr>
 
+            {{-- This is use to catch the previous record --}}
+            <input name="appId" type="hidden" class="form-control" id="specificSizeID" value="{{ $appId }}" >
+
             <!-- Name -->
             <div class="mb-3 row">
                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
-                    <input name="name" type="text" class="form-control" id="name" value="" readonly>
+                    <input name="name" type="text" class="form-control" id="name" value="{{ $name }}" readonly>
                 </div>
             </div>
 
@@ -67,7 +70,7 @@
             <div class="mb-3 row">
                 <label for="age" class="col-sm-4 col-form-label">Age</label>
                 <div class="col-sm-8">
-                    <input name="age" type="text" class="form-control" id="age" value="" readonly>
+                    <input name="age" type="text" class="form-control" id="age" value="{{ $age }}" readonly>
                 </div>
             </div>
 
@@ -75,7 +78,7 @@
             <div class="mb-3 row">
                 <label for="gender" class="col-sm-4 col-form-label">Gender</label>
                 <div class="col-sm-8">
-                    <input name="gender" type="text" class="form-control" id="gender" value="" readonly>
+                    <input name="gender" type="text" class="form-control" id="gender" value="{{ $gender }}" readonly>
                 </div>
             </div>
 
@@ -83,7 +86,7 @@
             <div class="mb-3 row">
                 <label for="date" class="col-sm-4 col-form-label">Date</label>
                 <div class="col-sm-8">
-                    <input name="date" type="date" class="form-control" id="date" value="" readonly>
+                    <input name="date" type="date" class="form-control" id="date" value="{{ $date }}" readonly>
                 </div>
             </div>
 
@@ -91,7 +94,7 @@
             <div class="mb-3 row">
                 <label for="appNo" class="col-sm-4 col-form-label">Appointment No</label>
                 <div class="col-sm-8">
-                    <input name="appNo" type="text" class="form-control" id="appNo" value="" readonly>
+                    <input name="appNo" type="text" class="form-control" id="appNo" value="{{ $appNo }}" readonly>
                 </div>
             </div>
 
@@ -99,7 +102,7 @@
             <div class="mb-3 row">
                 <label for="disease" class="col-sm-4 col-form-label">Disease</label>
                 <div class="col-sm-8">
-                    <input name="disease" type="text" class="form-control" id="disease" value="" readonly>
+                    <input name="disease" type="text" class="form-control" id="disease" value="{{ $disease }}" readonly>
                     <span class="text-danger">
                         @error('disease')
                             <br>                          
@@ -175,7 +178,7 @@
             <div class="mb-3 row">
                 <label for="dName" class="col-sm-4 col-form-label">Doctor Name</label>
                 <div class="col-sm-8">
-                    <input name="dName" type="text" class="form-control" id="dName" value="" readonly>
+                    <input name="dName" type="text" class="form-control" id="dName" value="{{ "Dr. ".$dName }}" readonly>
                 </div>
             </div>
 
