@@ -63,7 +63,22 @@ class AppointmentController extends Controller
 
     // view appointment list
     function showAppointments() {
+        // Check if the user is logged in
+        if (!Session::has('loginId')) {
+            return redirect('/login')->with('fail', 'Access Denied! You have to log in first!');
+        }
+    
+        // Fetch logged-in user's details
+        $userId = Session::get('loginId');
+        $user = User::find($userId);
+    
+        // Check if the user is an admin or doctor
+        if ($user->role !== 'Admin' && $user->role !== 'Doctor') {
+            return redirect('/dashboard')->with('fail', 'Access Denied! Only Admins and Doctors can access this page.');
+        }
+    
+        // Fetch all appointments and pass them to the view
         $data = Appointment::all();
-        return view('appointments/appList', ['appointments'=>$data]);
+        return view('appointments/appList', ['appointments' => $data]);
     }
 }

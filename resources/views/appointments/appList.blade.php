@@ -47,8 +47,8 @@
                             <td>{{$app['age']}}</td>                        
                             <td>{{$app['gender']}}</td>                      
                             <td>
-                                <a href="" class="btn btn-warning">Treatemet</a> 
-                                <button class="btn btn-danger" onclick="showRejectAlert('{{url('remove/'.$app['id'])}}')">Remove</button>
+                                <a href="/prescription" class="btn btn-warning">Treatemet</a> 
+                                <button class="btn btn-danger" onclick="showRejectAlert('')">Remove</button>
                             </td>
                         </tr>
                     @endforeach

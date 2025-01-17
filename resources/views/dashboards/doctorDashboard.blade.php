@@ -137,7 +137,7 @@
     <div class="button-grid">
         <a href="/tempList" class="btn-custom-1">Registration Request Management</a>
         <a href="" class="btn-custom-1">User Management</a>
-        <a href="" class="btn-custom-1">Appointments</a>
+        <a href="/appList" class="btn-custom-1">Appointments</a>
         <a href="" class="btn-custom-1">Patient Records</a>
         <a href="" class="btn-custom-1">Process Audit</a>
         <a href="" class="btn-custom-1">Inventory Management</a>
