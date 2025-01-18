@@ -48,7 +48,7 @@
                             <td>{{$job['gender']}}</td>
                             <td>{{$job['dName']}}</td>                                                   
                             <td>
-                                <a href="" class="btn btn-success">Process</a>                                
+                                <a href="{{"prepareMedicine/".$job['id']}}" class="btn btn-success">Process</a>                                
                             </td>
                         </tr>
                     @endforeach

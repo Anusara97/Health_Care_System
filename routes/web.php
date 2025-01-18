@@ -56,3 +56,10 @@ Route::post('/prescription/save', [AppointmentController::class, 'savePrescripti
 
 //Issue Medicine Processing
 Route::get('/pendingJob', [PatientRecordController::class, 'viewJobsJNR']);
+Route::get('/prepareMedicine/{id}', [PatientRecordController::class, 'prepareMedicine']);
+Route::post('/savePreparation', [PatientRecordController::class, 'savePreparation']);
+Route::view('/checkJob', 'treatments/checkJobJNR');
+
+Route::get('/pendingJobSNR', [PatientRecordController::class, 'viewJobsSNR']);
+Route::get('/checkMedicine/{id}', [PatientRecordController::class, 'checkMedicine']);
+Route::post('/saveReport', [PatientRecordController::class, 'saveReport']);

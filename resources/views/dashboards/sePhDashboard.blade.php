@@ -60,14 +60,14 @@
     }
     
 
-    /* Gradient Colors */
+    /* Gradient Colors */    
     .btn-custom-1:nth-child(1) {
-        background: linear-gradient(135deg, #ffe259, #ffa751); /* Bright Yellow */
+        background: linear-gradient(135deg, #f8ef3a, #e42c2c); /* Magenta */
     }
 
     .btn-custom-1:nth-child(2) {
-        background: linear-gradient(135deg, #ff758c, #ff7eb3); /* Bright Pink */
-    }
+        background: linear-gradient(135deg, #4facfe, #00f2fe); /* Coral */
+    }    
 
     .btn-custom-1:nth-child(3) {
         background: linear-gradient(135deg, #56ab2f, #a8e063); /* Bright Green */
@@ -75,10 +75,10 @@
 
     .btn-custom-1:nth-child(4) {
         background: linear-gradient(135deg, #f1f2f4, #8059cf); /* Bright Blue */
-    }
+    }    
 
     .btn-custom-1:nth-child(5) {
-        background: linear-gradient(135deg, #4facfe, #00f2fe); /* Coral */
+        background: linear-gradient(135deg, #ffe259, #ffa751); /* Bright Yellow */
     }
 
     .btn-custom-1:nth-child(6) {
@@ -86,7 +86,7 @@
     }
 
     .btn-custom-1:nth-child(7) {
-        background: linear-gradient(135deg, #f8ef3a, #e42c2c); /* Magenta */
+        background: linear-gradient(135deg, #ff758c, #ff7eb3); /* Bright Pink */
     }
 
     .btn-custom-1:nth-child(8) {
@@ -135,8 +135,8 @@
     
     <!-- Button Section -->
     <div class="button-grid">
-        <a href="/tempList" class="btn-custom-1">Registration Request Management</a>
-        <a href="" class="btn-custom-1">User Management</a>
+        <a href="/pendingJob" class="btn-custom-1">Prescription Preparation Requests</a>
+        <a href="/pendingJobSNR" class="btn-custom-1">Prescription Confirmation Requests</a>
         <a href="" class="btn-custom-1">Appointments</a>
         <a href="" class="btn-custom-1">Patient Records</a>
         <a href="" class="btn-custom-1">Process Audit</a>

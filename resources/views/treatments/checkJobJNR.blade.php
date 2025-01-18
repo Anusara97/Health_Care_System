@@ -10,9 +10,14 @@
         background-color: #f8f9fa;
     }
 
-    /* Custom styles for toggle buttons */
+    /* Toggle button styles */
     .btn-toggle {
         width: 120px;
+        padding: 5px 10px;
+        border: none;
+        font-size: 14px;
+        border-radius: 5px;
+        font-weight: 500;
     }
 
     .btn-toggle.active-green {
@@ -27,13 +32,34 @@
 
     .btn-toggle-group {
         display: flex;
-        justify-content: space-around;
+        gap: 10px; /* Add spacing between buttons */
+    }
+
+    /* Align and adjust input and label fields */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    /* Description field alignment and visibility */
+    .description-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .description-container input {
+        width: 100%;
     }
 </style>
 
 <body style="background-color: #f8f9fa">
     <div class="abc">
-        <form action="/prescription/save" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 500px;">
+        <form action="/savePreparation" method="POST" class="p-4 rounded shadow bg-white" style="width: 100%; max-width: 520px;">
             @csrf
             
             {{-- Notification --}}
@@ -55,88 +81,26 @@
 
             <hr>
 
-            {{-- This is use to catch the previous record --}}
-            <input name="appId" type="hidden" class="form-control" id="specificSizeID" value="" >
+            {{-- Auto-fill Fields --}}
+            <input name="appId" type="hidden" id="specificSizeID" value="{{ $job->id }}"> <!-- Hidden appointment ID -->
 
-            <!-- Name -->
+            <!-- Patient Information Fields -->
+            @foreach (['name', 'age', 'gender', 'date', 'appNo', 'disease', 'drugName', 'dosage'] as $field)
             <div class="mb-3 row">
-                <label for="name" class="col-sm-4 col-form-label">Name</label>
+                <label for="{{ $field }}" class="col-sm-4 col-form-label">{{ ucfirst($field) }}</label>
                 <div class="col-sm-8">
-                    <input name="name" type="text" class="form-control" id="name" value="" readonly>
+                    <input type="text" class="col-sm-8 form-control" id="{{ $field }}" value="{{ $job->$field }}" readonly>
                 </div>
             </div>
-
-            <!-- Age -->
-            <div class="mb-3 row">
-                <label for="age" class="col-sm-4 col-form-label">Age</label>
-                <div class="col-sm-8">
-                    <input name="age" type="text" class="form-control" id="age" value="" readonly>
-                </div>
-            </div>
-
-            <!-- Gender -->
-            <div class="mb-3 row">
-                <label for="gender" class="col-sm-4 col-form-label">Gender</label>
-                <div class="col-sm-8">
-                    <input name="gender" type="text" class="form-control" id="gender" value="" readonly>
-                </div>
-            </div>
-
-            <!-- Date -->
-            <div class="mb-3 row">
-                <label for="date" class="col-sm-4 col-form-label">Date</label>
-                <div class="col-sm-8">
-                    <input name="date" type="date" class="form-control" id="date" value="" readonly>
-                </div>
-            </div>
-
-            <!-- Appointment No -->
-            <div class="mb-3 row">
-                <label for="appNo" class="col-sm-4 col-form-label">Appointment No</label>
-                <div class="col-sm-8">
-                    <input name="appNo" type="text" class="form-control" id="appNo" value="" readonly>
-                </div>
-            </div>
-
-            <!-- Disease -->
-            <div class="mb-3 row">
-                <label for="disease" class="col-sm-4 col-form-label">Disease</label>
-                <div class="col-sm-8">
-                    <input name="disease" type="text" class="form-control" id="disease" value="" readonly>                    
-                </div>                
-            </div>
-
-            <hr>
-            
-            <div class="mb-3">
-                <h4 style="text-align: center">Treatment Details</h4>
-            </div>
-
-            <hr>
-            
-            <!-- Drug Name -->
-            <div class="mb-3 row">
-                <label for="specificSizeInputdrugName" class="col-sm-4 col-form-label">Drug Name</label>
-                <div class="col-sm-8">
-                    <input name="drugName" type="text" class="form-control" id="specificSizeInputdrugName" placeholder="Piriton" value="" readonly>                    
-                </div>
-            </div>
-
-            <!-- Dosage -->
-            <div class="mb-3 row">
-                <label for="specificSizeInputDosage" class="col-sm-4 col-form-label">Dosage</label>
-                <div class="col-sm-8">
-                    <input name="dosage" type="text" class="form-control" id="specificSizeInputDosage" placeholder="1/12 bd" value="" readonly>                    
-                </div>
-            </div>
+            @endforeach
 
             <!-- Patient Status -->
             <div class="mb-3 row">
                 <label for="patientStatus" class="col-sm-4 col-form-label">Patient Status</label>
                 <div class="col-sm-8 btn-toggle-group">
-                    <button type="button" id="patientStatusNormal" class="btn btn-toggle active-green" onclick="togglePatientStatus('Normal')">Normal</button>
-                    <button type="button" id="patientStatusEmergency" class="btn btn-toggle" onclick="togglePatientStatus('Emergency')">Emergency</button>
-                    <input type="hidden" name="patientStatus" id="patientStatusInput" value="Normal">
+                    <button type="button" class="btn btn-toggle {{ $job->patientStatus === 'Normal' ? 'active-green' : 'active-red' }}" disabled>
+                        {{ ucfirst($job->patientStatus) }}
+                    </button>
                 </div>
             </div>
 
@@ -144,9 +108,9 @@
             <div class="mb-3 row">
                 <label for="substitutionStatus" class="col-sm-4 col-form-label">Substitution Status</label>
                 <div class="col-sm-8 btn-toggle-group">
-                    <button type="button" id="substitutionStatusYes" class="btn btn-toggle" onclick="toggleSubstitutionStatus('Yes')">Yes</button>
-                    <button type="button" id="substitutionStatusNo" class="btn btn-toggle active-red" onclick="toggleSubstitutionStatus('No')">No</button>
-                    <input type="hidden" name="substitutionStatus" id="substitutionStatusInput" value="No">
+                    <button type="button" class="btn btn-toggle {{ $job->substitutionStatus === 'Yes' ? 'active-green' : 'active-red' }}" disabled>
+                        {{ ucfirst($job->substitutionStatus) }}
+                    </button>
                 </div>
             </div>
 
@@ -154,15 +118,21 @@
             <div class="mb-3 row">
                 <label for="dName" class="col-sm-4 col-form-label">Doctor Name</label>
                 <div class="col-sm-8">
-                    <input name="dName" type="text" class="form-control" id="dName" value="" readonly>
+                    <input type="text" class="form-control" id="dName" value="{{ $job->dName }}" readonly>
                 </div>
             </div>
+
+            <hr>
+                <div class="mb-3">
+                    <h4 style="text-align: center">Processing Details</h4>
+                </div>
+            <hr>
 
             <!-- Prepared By -->
             <div class="mb-3 row">
                 <label for="preparedBy" class="col-sm-4 col-form-label">Prepared By</label>
                 <div class="col-sm-8">
-                    <input name="preparedBy" type="text" class="form-control" id="preparedBy" value="" readonly>
+                    <input type="text" name="preparedBy" class="form-control" id="preparedBy" value="{{ $currentUser->name }}" readonly>
                 </div>
             </div>
 
@@ -170,71 +140,56 @@
             <div class="mb-3 row">
                 <label for="pRole" class="col-sm-4 col-form-label">Role</label>
                 <div class="col-sm-8">
-                    <input name="pRole" type="text" class="form-control" id="pRole" value="" readonly>
+                    <input type="text" name="pRole" class="form-control" id="pRole" value="{{ $currentUser->role }}" readonly>
                 </div>
             </div>
 
-            <!-- Doctor Consultancy -->
-
-            <!-- Description -->
+            <!-- Doctor Consultancy Section -->
             <div class="mb-3 row">
-                <label for="specificSizeInputDosage" class="col-sm-4 col-form-label">Dosage</label>
+                <label for="doctorConsultancy" class="col-sm-4 col-form-label">Doctor Consultancy</label>
+                <div class="col-sm-8 btn-toggle-group">
+                    <button type="button" id="consultancyNo" class="btn btn-toggle active-red" onclick="toggleConsultancy('No')">No</button>
+                    <button type="button" id="consultancyYes" class="btn btn-toggle" onclick="toggleConsultancy('Yes')">Yes</button>
+                    <input type="hidden" name="doctorConsultancy" id="doctorConsultancy" value="No">
+                </div>
+            </div>
+
+            <!-- Description Field -->
+            <div class="mb-3 row description-container" id="descriptionContainer" style="display: none;">
+                <label for="specificSizeInputDescription" class="col-sm-4 col-form-label">Description</label>
                 <div class="col-sm-8">
-                    <input name="description" type="text" class="form-control" id="specificSizeInputDescription" placeholder="" value="" required>
-                    <span class="text-danger">
-                        @error('description')
-                            <br>                          
-                            <div class="alert alert-danger" style="text-align:center;" >
-                                {{$message}}
-                            </div>
-                        @enderror
-                    </span>
+                    <input name="description" type="text" class="form-control" id="specificSizeInputDescription" placeholder="Enter a description">
                 </div>
             </div>
 
             <hr>
 
+            <!-- Buttons -->
             <div class="d-flex justify">
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                 <button type="reset" class="btn btn-danger me-2">Reset</button>
-                <a href="/" class="btn btn-warning">Home</a>
+                <a href="/dashboard" class="btn btn-warning">Dashboard</a>
             </div>
         </form>
     </div>
 
     <script>
-        // Toggle Patient Status
-        function togglePatientStatus(status) {
-            document.getElementById('patientStatusInput').value = status;
-            const normalButton = document.getElementById('patientStatusNormal');
-            const emergencyButton = document.getElementById('patientStatusEmergency');
-
-            if (status === 'Normal') {
-                normalButton.classList.add('active-green');
-                normalButton.classList.remove('active-red');
-                emergencyButton.classList.remove('active-green', 'active-red');
-            } else {
-                emergencyButton.classList.add('active-red');
-                emergencyButton.classList.remove('active-green');
-                normalButton.classList.remove('active-green', 'active-red');
-            }
-        }
-
-        // Toggle Substitution Status
-        function toggleSubstitutionStatus(status) {
-            document.getElementById('substitutionStatusInput').value = status;
-            const yesButton = document.getElementById('substitutionStatusYes');
-            const noButton = document.getElementById('substitutionStatusNo');
-
-            if (status === 'Yes') {
-                yesButton.classList.add('active-green');
-                yesButton.classList.remove('active-red');
-                noButton.classList.remove('active-green', 'active-red');
-            } else {
-                noButton.classList.add('active-red');
-                noButton.classList.remove('active-green');
-                yesButton.classList.remove('active-green', 'active-red');
-            }
+        // Toggle Doctor Consultancy
+        function toggleConsultancy(status) {
+            const doctorConsultancyInput = document.getElementById('doctorConsultancy');
+            const descriptionContainer = document.getElementById('descriptionContainer');
+            const consultancyNo = document.getElementById('consultancyNo');
+            const consultancyYes = document.getElementById('consultancyYes');
+    
+            doctorConsultancyInput.value = status;
+    
+            // Update button states
+            consultancyNo.classList.toggle('active-red', status === 'No');
+            consultancyYes.classList.toggle('active-green', status === 'Yes');
+    
+            // Show/Hide Description field based on status
+            descriptionContainer.style.display = status === 'Yes' ? 'flex' : 'none';
         }
     </script>
+    
 </body>
