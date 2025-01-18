@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Appointment;
 use App\Models\PatientRecord;
+use App\Models\PendingJob;
 use Session;
 
 class AppointmentController extends Controller
