@@ -129,6 +129,22 @@ class AppointmentController extends Controller
             'dosage' => 'required|string',            
         ]);
 
+        $pJob = new PendingJob();
+
+        $pJob->name = $req->name;
+        $pJob->age = $req->age;
+        $pJob->gender = $req->gender;
+        $pJob->appNo = $req->appNo;
+        $pJob->date = $req->date;
+        $pJob->disease = $req->disease;
+        $pJob->drugName = $req->drugName;
+        $pJob->dosage = $req->dosage;
+        $pJob->patientStatus = $req->patientStatus;
+        $pJob->substitutionStatus = $req->substitutionStatus;
+        $pJob->dName = $req->dName;
+
+        $pJob->save();
+
         // Save prescription data in PatientRecords table
         $record = new PatientRecord();
 

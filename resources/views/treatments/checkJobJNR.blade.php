@@ -56,13 +56,13 @@
             <hr>
 
             {{-- This is use to catch the previous record --}}
-            <input name="appId" type="hidden" class="form-control" id="specificSizeID" value="{{ $appId }}" >
+            <input name="appId" type="hidden" class="form-control" id="specificSizeID" value="" >
 
             <!-- Name -->
             <div class="mb-3 row">
                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
-                    <input name="name" type="text" class="form-control" id="name" value="{{ $name }}" readonly>
+                    <input name="name" type="text" class="form-control" id="name" value="" readonly>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
             <div class="mb-3 row">
                 <label for="age" class="col-sm-4 col-form-label">Age</label>
                 <div class="col-sm-8">
-                    <input name="age" type="text" class="form-control" id="age" value="{{ $age }}" readonly>
+                    <input name="age" type="text" class="form-control" id="age" value="" readonly>
                 </div>
             </div>
 
@@ -78,7 +78,7 @@
             <div class="mb-3 row">
                 <label for="gender" class="col-sm-4 col-form-label">Gender</label>
                 <div class="col-sm-8">
-                    <input name="gender" type="text" class="form-control" id="gender" value="{{ $gender }}" readonly>
+                    <input name="gender" type="text" class="form-control" id="gender" value="" readonly>
                 </div>
             </div>
 
@@ -86,7 +86,7 @@
             <div class="mb-3 row">
                 <label for="date" class="col-sm-4 col-form-label">Date</label>
                 <div class="col-sm-8">
-                    <input name="date" type="date" class="form-control" id="date" value="{{ $date }}" readonly>
+                    <input name="date" type="date" class="form-control" id="date" value="" readonly>
                 </div>
             </div>
 
@@ -94,7 +94,7 @@
             <div class="mb-3 row">
                 <label for="appNo" class="col-sm-4 col-form-label">Appointment No</label>
                 <div class="col-sm-8">
-                    <input name="appNo" type="text" class="form-control" id="appNo" value="{{ $appNo }}" readonly>
+                    <input name="appNo" type="text" class="form-control" id="appNo" value="" readonly>
                 </div>
             </div>
 
@@ -102,7 +102,7 @@
             <div class="mb-3 row">
                 <label for="disease" class="col-sm-4 col-form-label">Disease</label>
                 <div class="col-sm-8">
-                    <input name="disease" type="text" class="form-control" id="disease" value="{{ $disease }}" readonly>                    
+                    <input name="disease" type="text" class="form-control" id="disease" value="" readonly>                    
                 </div>                
             </div>
 
@@ -118,15 +118,7 @@
             <div class="mb-3 row">
                 <label for="specificSizeInputdrugName" class="col-sm-4 col-form-label">Drug Name</label>
                 <div class="col-sm-8">
-                    <input name="drugName" type="text" class="form-control" id="specificSizeInputdrugName" placeholder="Piriton" value="{{old('drugName')}}" required>
-                    <span class="text-danger">
-                        @error('drugName')
-                            <br>                          
-                            <div class="alert alert-danger" style="text-align:center;" >
-                                {{$message}}
-                            </div>
-                        @enderror
-                    </span>
+                    <input name="drugName" type="text" class="form-control" id="specificSizeInputdrugName" placeholder="Piriton" value="" readonly>                    
                 </div>
             </div>
 
@@ -134,15 +126,7 @@
             <div class="mb-3 row">
                 <label for="specificSizeInputDosage" class="col-sm-4 col-form-label">Dosage</label>
                 <div class="col-sm-8">
-                    <input name="dosage" type="text" class="form-control" id="specificSizeInputDosage" placeholder="1/12 bd" value="{{old('dosage')}}" required>
-                    <span class="text-danger">
-                        @error('dosage')
-                            <br>                          
-                            <div class="alert alert-danger" style="text-align:center;" >
-                                {{$message}}
-                            </div>
-                        @enderror
-                    </span>
+                    <input name="dosage" type="text" class="form-control" id="specificSizeInputDosage" placeholder="1/12 bd" value="" readonly>                    
                 </div>
             </div>
 
@@ -170,7 +154,41 @@
             <div class="mb-3 row">
                 <label for="dName" class="col-sm-4 col-form-label">Doctor Name</label>
                 <div class="col-sm-8">
-                    <input name="dName" type="text" class="form-control" id="dName" value="{{ "Dr. ".$dName }}" readonly>
+                    <input name="dName" type="text" class="form-control" id="dName" value="" readonly>
+                </div>
+            </div>
+
+            <!-- Prepared By -->
+            <div class="mb-3 row">
+                <label for="preparedBy" class="col-sm-4 col-form-label">Prepared By</label>
+                <div class="col-sm-8">
+                    <input name="preparedBy" type="text" class="form-control" id="preparedBy" value="" readonly>
+                </div>
+            </div>
+
+            <!-- Role -->
+            <div class="mb-3 row">
+                <label for="pRole" class="col-sm-4 col-form-label">Role</label>
+                <div class="col-sm-8">
+                    <input name="pRole" type="text" class="form-control" id="pRole" value="" readonly>
+                </div>
+            </div>
+
+            <!-- Doctor Consultancy -->
+
+            <!-- Description -->
+            <div class="mb-3 row">
+                <label for="specificSizeInputDosage" class="col-sm-4 col-form-label">Dosage</label>
+                <div class="col-sm-8">
+                    <input name="description" type="text" class="form-control" id="specificSizeInputDescription" placeholder="" value="" required>
+                    <span class="text-danger">
+                        @error('description')
+                            <br>                          
+                            <div class="alert alert-danger" style="text-align:center;" >
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </span>
                 </div>
             </div>
 

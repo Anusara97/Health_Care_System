@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TempUserController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\PatientRecordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,6 @@ Route::get('/appList', [AppointmentController::class, 'showAppointments']);
 //Treatement
 Route::get('/prescription/{id}', [AppointmentController::class, 'showPrescriptionForm']);
 Route::post('/prescription/save', [AppointmentController::class, 'savePrescription']);
+
+//Issue Medicine Processing
+Route::get('/pendingJob', [PatientRecordController::class, 'viewJobsJNR']);
