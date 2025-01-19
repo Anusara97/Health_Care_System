@@ -60,6 +60,7 @@ Route::get('/prepareMedicine/{id}', [PatientRecordController::class, 'prepareMed
 Route::post('/savePreparation', [PatientRecordController::class, 'savePreparation']);
 Route::view('/checkJob', 'treatments/checkJobJNR');
 
+//Senior Pharmacists operations
 Route::get('/pendingJobSNR', [PatientRecordController::class, 'viewJobsSNR']);
 Route::get('/checkMedicine/{id}', [PatientRecordController::class, 'checkMedicine']);
 Route::post('/saveReport', [PatientRecordController::class, 'saveReport']);
