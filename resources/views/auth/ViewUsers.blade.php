@@ -74,13 +74,18 @@
     }
 
     .btn-custom-1:nth-child(4) {
-        background: linear-gradient(135deg, #e70c0c, #c1bbbb); /* Sky Blue */
+        background: linear-gradient(135deg, #4facfe, #00f2fe); /* Coral */
     }
 
     .btn-custom-1:nth-child(5) {
+        background: linear-gradient(135deg, #e70c0c, #c1bbbb); /* Sky Blue */
+    }
+
+    .btn-custom-1:nth-child(6) {
         background: linear-gradient(135deg, #43cea2, #185a9d); /* Aqua */
     }
 
+    
     .btn-custom-1:hover {
         transform: scale(1.05);
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
@@ -102,12 +107,12 @@
         </a>
 
         <div class="d-flex align-items-center">
-            <p class="mb-0 text-black" style="font-size: 1.0rem;">Hello, Admin</p>
+            <p class="mb-0 text-black me-4" style="font-size: 1.0rem;">Mr. {{$admin['name']}}</p>
+            <a href="/dashboard" class="btn btn-outline-primary me-2">Dashboard</a>
             <ul class="nav nav-pills">  
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
-                    <ul class="dropdown-menu">
-                        {{-- <li><a class="dropdown-item" href="{{url('editUser/'.$data['id'])}}">Edit Profile</a></li> --}}
+                    <a class="nav-link dropdown-toggle me-2" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Menu</a>
+                    <ul class="dropdown-menu">                        
                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>
                 </li>
@@ -120,10 +125,12 @@
 <div class="abc">
     <!-- Heading Section -->
     <h1 class="section-heading">User Management</h1>
+    <hr>
     
     <!-- Button Section -->
     <div class="button-grid">
-        <a href="" class="btn-custom-1">Add User</a>
+        <a href="/addUser" class="btn-custom-1">Add User</a>
+        <a href="" class="btn-custom-1">Admin</a>
         <a href="" class="btn-custom-1">Doctors</a>
         <a href="" class="btn-custom-1">Senior Pharmacists</a>
         <a href="" class="btn-custom-1">Junior Pharmacists</a>

@@ -39,7 +39,7 @@ Route::get('approve/{id}',[TempUserController::class, 'registerUser']);
 Route::get('reject/{id}',[TempUserController::class, 'rejectRequest']);
 
 //User management Operations
-Route::view('/viewUsers', 'auth/ViewUsers');
+Route::get('/viewUsers', [UserController::class, 'userManagement']);
 Route::get('/userList',[UserController::class, 'showUsers']);
 Route::get('remove/{id}',[UserController::class, 'removeUser']);
 Route::get('edit/{id}',[UserController::class, 'editUser']);

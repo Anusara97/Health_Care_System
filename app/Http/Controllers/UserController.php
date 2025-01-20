@@ -27,6 +27,25 @@ class UserController extends Controller
         }
     }
 
+    //view users in the inner file after categorized.
+    function userManagement() {
+        // Check if the user is logged in
+        if (!Session::has('loginId')) {
+            return redirect('/login')->with('fail', 'Access Denied! You have to log in first!');
+        }
+
+        // Fetch logged-in user's details
+        $userId = Session::get('loginId');
+        $admin = User::find($userId);
+
+        // Check if the user is a doctor
+        if ($admin->role !== 'Admin') {
+            return redirect('/dashboard')->with('fail', 'Access Denied! Only Admin manage users.');
+        }
+
+        return view('auth/ViewUsers', compact('admin'));
+    }
+
     //This function used to view user details before edit
     function editUser($id) {
         $data = User::find($id);
